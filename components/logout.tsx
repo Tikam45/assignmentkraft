@@ -1,5 +1,5 @@
 
-'use client';
+"use client"
 
 import { useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/router';
