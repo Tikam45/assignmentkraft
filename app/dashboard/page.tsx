@@ -1,16 +1,31 @@
+'use client';
 
-import Dashboard from "@/components/dashboard";
-import { currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import DashboardHome from '@/components/index';
 
-export default async function DashboardPage() {
-  const user = await currentUser();
+export default function DashboardPage() {
+  const { isLoaded, isSignedIn } = useUser();
+  const router = useRouter();
 
-  if (!user) {
-    redirect('/sign-in');
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      router.push('/sign-in');
+    }
+  }, [isLoaded, isSignedIn, router]);
+
+  if (!isLoaded) {
+    return <div>Loading........</div>;
+  }
+
+  if (!isSignedIn) {
+    return null;
   }
 
   return (
-    <Dashboard/>
+    <div>
+        <DashboardHome/>
+    </div>
   );
 }
