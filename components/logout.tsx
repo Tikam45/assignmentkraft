@@ -2,13 +2,14 @@
 'use client';
 
 import { useClerk } from '@clerk/nextjs';
+import { useRouter } from 'next/router';
 export function LogoutButton() {
   const { signOut } = useClerk();
+  const router = useRouter();
 
   const handleSignOut = async () => {
-    await signOut({ redirectUrl: '/sign-in' });  
+    await signOut(()=>router.push('/'));  
   };
-
   return (
     <div className='flex justify-center items-center h-screen'>
       <button
