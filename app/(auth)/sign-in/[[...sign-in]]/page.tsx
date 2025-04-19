@@ -29,6 +29,7 @@ export default function SignInPage() {
         router.push("/dashboard");
       }
     } catch (error) {
+      console.log(error);
       setError("Unknown error");
     }
   };

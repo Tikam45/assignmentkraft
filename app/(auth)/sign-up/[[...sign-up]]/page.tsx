@@ -32,6 +32,7 @@ export default function SignUpPage() {
         router.push('/dashboard');
       }
     } catch (err) {
+      console.log(err);
       setError('Something went wrong');
     }
   };
