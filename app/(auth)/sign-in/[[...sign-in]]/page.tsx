@@ -28,8 +28,8 @@ export default function SignInPage() {
         await setActive({ session: result.createdSessionId });
         router.push("/dashboard");
       }
-    } catch (err: any) {
-      setError(err.errors?.[0]?.message || "Unknown error");
+    } catch (error) {
+      setError("Unknown error");
     }
   };
 
@@ -94,7 +94,7 @@ export default function SignInPage() {
           Sign in with Google
         </button>
         
-      <div className="text-center"><Link href={'/sign-up'} className="text-center underline">Don't have an account? Sign up</Link></div>
+      <div className="text-center"><Link href={'/sign-up'} className="text-center underline">Not have an account? Sign up</Link></div>
       </form>
     </div>
   );

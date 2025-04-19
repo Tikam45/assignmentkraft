@@ -1,12 +1,9 @@
 
 'use client';
 
-import { useClerk } from '@clerk/nextjs';  
-import { useRouter } from 'next/navigation';
-
+import { useClerk } from '@clerk/nextjs';
 export function LogoutButton() {
   const { signOut } = useClerk();
-  const router = useRouter();
 
   const handleSignOut = async () => {
     await signOut({ redirectUrl: '/sign-in' });  

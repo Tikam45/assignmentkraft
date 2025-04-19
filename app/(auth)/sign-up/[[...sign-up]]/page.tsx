@@ -31,8 +31,8 @@ export default function SignUpPage() {
         await setActive({ session: result.createdSessionId });
         router.push('/dashboard');
       }
-    } catch (err: any) {
-      setError(err.errors?.[0]?.message || 'Something went wrong');
+    } catch (err) {
+      setError('Something went wrong');
     }
   };
 
