@@ -9,7 +9,6 @@ export function LogoutButton() {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    router.push("/");
     await signOut(()=>router.push("/"));  
   };
   return (
